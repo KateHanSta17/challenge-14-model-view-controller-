@@ -11,6 +11,10 @@ const helpers = require('./utils/helpers');  // optional: for any helper functio
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+});
+
 const sess = {
   secret: 'Super secret secret',
   cookie: {},
